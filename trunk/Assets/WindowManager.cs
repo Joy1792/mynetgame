@@ -3,31 +3,37 @@ using System.Collections;
 
 public class WindowManager : MonoBehaviour {
 	public GameObject windowPanel;
+	private WindowPanelScript script;
 	void Start () 
 	{
-	
+		script = windowPanel.GetComponent<WindowPanelScript>();
 	}
 	
 	void Update () 
 	{
+		bool s = true;
 		if(WindowConstans.windowList.Count>0)
 		{
 			int type = WindowConstans.windowList[0];
 			OnWindow(type);
 			WindowConstans.windowList.RemoveAt(0);
 		}
+
 	}
 	public void OnWindow(int type)
 	{
 		switch(type)
 		{
 		case WindowConstans.INPUT_ERROR:
-			windowPanel.BroadcastMessage("setMessage","Input error,reinput");
+			script.setMessage("Input error,reinput");
+			//windowPanel.BroadcastMessage("setMessage","Input error,reinput");
 			break;
 		default:
-			windowPanel.BroadcastMessage("setMessage","unknow error");
+			script.setMessage("unknow error");
+			//windowPanel.BroadcastMessage("setMessage","unknow error");
 			break;
 		}
 		windowPanel.SetActive(true);
 	}
-}
+} 
+ 
