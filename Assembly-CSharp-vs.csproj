@@ -39,18 +39,18 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor4.3.2f1/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor4.3.2f1/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ConnServer.cs" />
-     <Compile Include="Assets\LoginSenceScript.cs" />
      <Compile Include="Assets\Model\ByteArray.cs" />
      <Compile Include="Assets\Model\GameInfo.cs" />
      <Compile Include="Assets\Model\GameState.cs" />
+     <Compile Include="Assets\Model\LoginProtocol.cs" />
+     <Compile Include="Assets\Model\Protocol.cs" />
      <Compile Include="Assets\Model\SocketModel.cs" />
      <Compile Include="Assets\Model\WindowConstans.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
@@ -175,10 +175,17 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\NetWorkScript.cs" />
-     <Compile Include="Assets\RegPanelScript.cs" />
-     <Compile Include="Assets\WindowManager.cs" />
-     <Compile Include="Assets\WindowPanelScript.cs" />
+     <Compile Include="Assets\Script\ConnServer.cs" />
+     <Compile Include="Assets\Script\Handler\LoginHandler.cs" />
+     <Compile Include="Assets\Script\Handler\MessageManager.cs" />
+     <Compile Include="Assets\Script\Handler\dto\LoginDTO.cs" />
+     <Compile Include="Assets\Script\Handler\dto\RegistDTO.cs" />
+     <Compile Include="Assets\Script\LoginSenceScript.cs" />
+     <Compile Include="Assets\Script\NetWorkScript.cs" />
+     <Compile Include="Assets\Script\RegPanelScript.cs" />
+     <Compile Include="Assets\Script\WindowManager.cs" />
+     <Compile Include="Assets\Script\WindowPanelScript.cs" />
+     <Compile Include="Assets\Script\coding\Coding.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
@@ -212,6 +219,9 @@
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+ <Reference Include="LitJson">
+ <HintPath>Assets\plugins\LitJson.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -221,5 +231,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
+  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><MonoDevelop><Properties><Policies><TextStylePolicy TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" /><CSharpFormattingPolicy IndentSwitchBody="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ArrayInitializerBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" /></Policies></Properties></MonoDevelop></ProjectExtensions>
+
 </Project>
