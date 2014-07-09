@@ -1,9 +1,9 @@
 ﻿using System;
 
-public class LoginDTO
+class LoginDTO
 {
 	//public string usrName{set;get;};
 	//public string passWord{set;get;};
-	public string usrName;
+	public string userName;
 	public string passWord;
 }

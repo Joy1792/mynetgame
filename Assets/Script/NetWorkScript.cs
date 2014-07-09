@@ -16,7 +16,9 @@ public class NetWorkScript
 	private static string ip = "127.0.0.1";
 	private static int port = 10100;
 	private static byte[] buff = new byte[1024];
-	private static List<SocketModel> messageList = new List<SocketModel>();
+	private static  List<SocketModel> messageList = new List<SocketModel>();
+
+
 	public static NetWorkScript getInstance()
 	{
 		if (instance == null)
@@ -29,10 +31,9 @@ public class NetWorkScript
 	public List<SocketModel> getList()
 	{
 		return messageList;
-		Debug.Log("return messageList;");
 	}
 
-	public static void init()
+	private static void init()
 	{
 		try
 		{
@@ -40,6 +41,7 @@ public class NetWorkScript
 			socket.Connect(ip, port);
 			Debug.Log("connect success");
 			socket.BeginReceive(buff, 0, 1024, SocketFlags.None, ReceiveCallBack, buff);
+			Debug.Log("socket session open");
 		} catch
 		{
 			Debug.Log("connect failed");
@@ -71,24 +73,27 @@ public class NetWorkScript
 
 	private static void ReceiveCallBack(IAsyncResult ar)
 	{
+
+		int readCount = 0;
 		try
 		{
 			//get message length
-			int readCount = 0;
 			readCount = socket.EndReceive(ar);
 			byte[] temp = new byte[readCount];
 			Buffer.BlockCopy(buff, 0, temp, 0, readCount);
+			readMessage(temp);
 		} catch
 		{
 			socket.Close();
-			Debug.Log("net error");
+			Debug.Log("network error");
+			return;
 
 		}
 		socket.BeginReceive(buff, 0, 1024, SocketFlags.None, ReceiveCallBack, buff);
 	}
 
 
-	private void readMesage(byte[] message)
+	public static void readMessage(byte[] message)
 	{
 		MemoryStream ms = new MemoryStream(message, 0, message.Length);
 		ByteArray ba = new ByteArray(ms);
@@ -99,6 +104,7 @@ public class NetWorkScript
 		int length = ba.ReadInt();
 		if (length > 0)
 		{
+			//model.message = ba.ReadUTFBytes((uint)(length-ba.Postion));
 			model.message = ba.ReadUTFBytes((uint)length);
 		}
 		messageList.Add(model);

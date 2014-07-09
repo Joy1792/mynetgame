@@ -10,7 +10,6 @@ public class LoginSenceScript : MonoBehaviour
 	{
 		if (GameInfo.GAME_STATE == GameState.RUN)
 		{
-			Debug.Log("Regist");
 			GameInfo.GAME_STATE = GameState.USR_REG;
 			regPanel.SetActive(true);
 		}
@@ -25,9 +24,10 @@ public class LoginSenceScript : MonoBehaviour
 		if(usrLabel.text != string.Empty && pwdLabel.text != string.Empty)
 		{
 			LoginDTO dto = new LoginDTO();
-			dto.usrName = usrLabel.text;
+			dto.userName = usrLabel.text;
 			dto.passWord = pwdLabel.text;
 			string message = Coding<LoginDTO>.encode(dto);
+
 			//send login message to server
 			NetWorkScript.getInstance().sendMessage(Protocol.LOGIN,0,LoginProtocol.LOGIN_CREQ,message);
 		}else
