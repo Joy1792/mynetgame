@@ -40,7 +40,7 @@ public class MessageManager : MonoBehaviour
 			case Protocol.MAP:
 				break;
 			default:
-				WindowConstans.windowList.Add(WindowConstans.SOCKETA_TYPE_FAIL);
+				//WindowConstans.windowList.Add(WindowConstans.SOCKETA_TYPE_FAIL);
 				break;
 		}
 	}

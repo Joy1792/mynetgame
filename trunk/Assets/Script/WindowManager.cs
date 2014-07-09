@@ -13,7 +13,6 @@ public class WindowManager : MonoBehaviour
 	
 	void Update()
 	{
-		bool s = true;
 		if (WindowConstans.windowList.Count > 0)
 		{
 			int type = WindowConstans.windowList [0];
@@ -36,6 +35,12 @@ public class WindowManager : MonoBehaviour
 				break;
 			case WindowConstans.SOCKETA_TYPE_FAIL:
 				script.setMessage("socket type error");
+				break;
+			case WindowConstans.USR_REG_OK:
+				script.SendMessage("USR_REG_OK");
+				break;
+			case WindowConstans.USR_REG_FAIL:
+				script.SendMessage("USR_REG_FAIL");
 				break;
 			default: 
 				script.setMessage("unknow error");
